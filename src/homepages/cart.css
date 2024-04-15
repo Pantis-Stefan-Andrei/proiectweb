@@ -1,0 +1,35 @@
+.bodyuser {
+    font-family: Arial, sans-serif;
+    max-height: 500px;
+    max-width: 900px;
+    overflow-y: auto;
+   
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333; /* Culoarea titlului */
+    text-align: center; /* Aliniere centrul */
+  }
+  
+  button {
+    margin: 5px; /* Spațiu între butoane */
+    padding: 10px 20px; /* Spațiul în interiorul butoanelor */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+
+  .buy-btn {
+    
+    color: white;
+  }
+  
+
+  .show-btn {
+    background-color: #ccc; /* Gri */
+    color: #666;
+  }
+  

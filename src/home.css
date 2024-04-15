@@ -1,0 +1,77 @@
+/* src/App.css */
+.app {
+    font-family: 'Arial', sans-serif; /* Schimbăm fontul principal */
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; /* Reducem padding-ul */
+    background-color: #f0f0f0;
+  }
+  
+  
+  .logo {
+    width: 50px; /* Ajustăm dimensiunile logo-ului */
+  }
+  
+  .options {
+    display: flex;
+  }
+  
+  .options button {
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .right-section {
+    display: flex;
+    
+
+
+    font-size: 30px;
+    margin-right: 5px;
+    margin-left: 100px;
+    
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(110vh - 100px); /* Centrăm paginile pe ecran */
+  }
+  
+  /* Stiluri pentru pagini */
+  .page-content {
+    padding:10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .icon:hover,
+  .nav-button:hover,
+.icon-button:hover {
+  background-color:#1affcd;
+
+}
+
+
+.nav-button,
+.icon-button {
+  font-size: 16px; 
+  width: 150px; 
+  height: 40px; 
+  
+}
+
+.icon {
+  font-size: 16px; 
+  width: 60px; 
+  height: 40px; 
+
+}

@@ -1,0 +1,58 @@
+.pagina-contact {
+  max-width: 600px;
+  margin: 50px auto; /* Distanță mai mare de top */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 100px;
+  animation: slideIn 1s ease;
+}
+
+.pagina-contact h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.informatii-contact {
+  margin-bottom: 30px;
+}
+
+.informatii-contact p {
+  margin: 5px 0;
+}
+
+.grup-formular {
+  margin-bottom: 20px;
+}
+
+.grup-formular label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.grup-formular input,
+.grup-formular textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.grup-formular textarea {
+  height: 150px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}

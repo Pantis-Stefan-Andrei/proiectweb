@@ -1,0 +1,9 @@
+
+.logo {
+    width: 40px; /* Set the width of the logo */
+    height: 40px; /* Set the height of the logo */
+    border-radius: 50%; /* Make the logo circular */
+    object-fit: cover; /* Ensure the logo fills the circle */
+    margin-right: 10px; /* Add some spacing to the right */
+  }
+  

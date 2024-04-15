@@ -1,0 +1,126 @@
+/* HomeAdmin.css */
+
+.home-admin-container {
+  display: flex;
+  position: relative; /* Added position relative for proper positioning of toggle button */
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.sidebar {
+  width: 180px; /* Decreased width */
+  height: 100%; /* Added height to fill the entire height */
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  transition: width 0.3s ease-in-out;
+  overflow: auto; /* AdaugÄƒ scrollbar atunci cÃ¢nd conÈ›inutul depÄƒÈ™eÈ™te dimensiunea containerului */
+  overflow-y: auto; /* AsigurÄƒ cÄƒ scrollbar-ul este doar vertical */
+  height: auto; /* SeteazÄƒ Ã®nÄƒlÈ›imea pentru a ocupa Ã®ntreaga Ã®nÄƒlÈ›ime a ferestrei browser-ului */
+  scrollbar-width: thin; /* Dimensiunea scrollbar-ului */
+scrollbar-color: #888 #222; /* Culoarea thumb-ului È™i a track-ului */
+
+}
+
+
+
+.profile-picture {
+  width: 140px; /* MÄƒrim dimensiunea imaginii */
+  height: 140px;
+  border-radius: 50%; /* PÄƒstrÄƒm conturul Ã®n formÄƒ de cerc */
+  margin-bottom: 20px; /* CreÈ™tem spaÈ›iul Ã®ntre imagine È™i text */
+  margin-top: 20px; /* MutÄƒm imaginea mai jos */
+  display: block; /* SetÄƒm afiÈ™area ca bloc pentru a putea centra */
+  margin-left: auto; /* CentrÄƒm imaginea pe orizontalÄƒ */
+  margin-right: auto;
+}
+.sidebar h2 {
+  text-align: center; /* CentrÄƒm titlul */
+  font-size: 24px; /* MÄƒrim dimensiunea textului */
+  margin-top: 20px; /* SpaÈ›iu suplimentar Ã®ntre titlu È™i imagine */
+}
+
+.sidebar h2 span {
+  display: block; 
+  font-size: 18px; 
+  margin-top: 10px; 
+  color: #666;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center; /* CentrÄƒm titlul */
+  font-size: 20px;; /* MÄƒrim dimensiunea textului */
+  margin-top: 16px; /* SpaÈ›iu suplimentar Ã®ntre titlu È™i imagine */
+  color: #13b894;
+  
+}
+
+.sidebar li {
+  margin-bottom: 30px; /* Increased margin between items */
+}
+
+.sidebar li.active {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.sidebar li:hover {
+  background-color: #555;
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px 40px; 
+  transition: margin-left 0.3s ease-in-out;
+  
+}
+
+/* Styling for the toggle button */
+.toggle-button {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color:#13b894;
+  margin: 4px 0;
+  transition: 0.4s;
+  
+}
+
+.bar-open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.bar-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.bar-open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Styling for the collapsed sidebar */
+.sidebar-closed {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.sidebar-closed .main-content {
+  margin-left: 0;
+}
+
+.sidebar-closed .toggle-button {
+  left: 5px;
+}

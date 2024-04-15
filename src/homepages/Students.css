@@ -1,0 +1,53 @@
+
+
+
+
+.cont {
+  max-width: 1200px;
+
+  margin: auto; /* Removed the 0 */
+  opacity: 0;
+  animation: fadeInOut 1s ease-in-out forwards;
+}
+
+.title {
+  text-align: center;
+}
+
+.product-grid { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Added transition for smooth effect */
+}
+
+.product-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image {
+  width: 100%; /* Changed width to 100% */
+  height: auto; /* Changed height to auto */
+}
+
+.product-name {
+  margin: 0;
+  font-size: 18px;
+}
+
+.product:hover {
+  transform: scale(1.05); /* Added hover effect to scale the product */
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  80% { opacity: 1; } 
+  100% { opacity: 1; }
+}
