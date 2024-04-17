@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaSearch } from 'react-icons/fa'; 
+
 import ProductPage from './ProductPage';
+
 import './Students.css'; 
 
 const ProductsListPage = ({ email })  => {
@@ -53,7 +54,7 @@ const ProductsListPage = ({ email })  => {
       ) : (
         <div className='product-display'>
         <div className='search-container'>
-        <FaSearch className="search-icon" />
+       <img className="search-icon" src="/search.png" alt="Search Icon" />
           <input
             type="text"
             placeholder="Search products..."
