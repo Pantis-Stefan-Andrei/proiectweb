@@ -1,2 +1,62 @@
 .bodyuser{
     animation: slideIn 1s ease;}
+    .bodyuser {
+        background-color: #f5f5f5;
+        padding: 50px;
+        border-radius: 10px;
+      }
+      
+      .bodyuser ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .bodyuser h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        color: #333;
+      }
+      
+      .bodyuser li {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .bodyuser form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      .bodyuser form button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 50px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .bodyuser form button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      
+      .bodyuser button {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 5px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .bodyuser button:hover {
+        background-color: #c82333;
+      }
+      

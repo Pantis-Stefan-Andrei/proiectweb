@@ -11,7 +11,8 @@ const Cart = ({ email }) => {
     Marime: '',
     Gen: '',
     Path: '',
-    Stare: ''
+    Stare: '',
+    NumeP:''
   });
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Cart = ({ email }) => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
-      const filteredOrders = response.data.filter(order => order.Stare === email);
+      const filteredOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
       setOrders(filteredOrders);
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -32,13 +33,13 @@ const Cart = ({ email }) => {
     try {
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
 
-      const processingOrders = response.data.filter(order => order.Stare === email);
+      const processingOrders = response.data.filter(order => order.NumeP === email);
    
       // Assuming there might be multiple processing orders, updating each one
       for (const order of processingOrders) {
         const order2=order;
         await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${order._id}`);
-        order2.Stare = 'Processing '+email;
+        order2.Stare = 'Processing';
         console.log(order2);
         await axios.post('https://sundbserver.azurewebsites.net/api/orders', order2);
     
@@ -54,7 +55,7 @@ const Cart = ({ email }) => {
   const handleShowProcessingOrders = async () => {
     try {
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
-      const processingOrders = response.data.filter(order => order.Stare ===('Processing '+email));
+      const processingOrders = response.data.filter(order => (order.Stare ===('Processing'))&&order.NumeP===email);
       setOrders(processingOrders);
       console.log(processingOrders);
     } catch (error) {
@@ -64,7 +65,17 @@ const Cart = ({ email }) => {
   const handleShowcart = async () => {
     try {
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
-      const processingOrders = response.data.filter(order => order.Stare ===email);
+      const processingOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
+      setOrders(processingOrders);
+      console.log(processingOrders);
+    } catch (error) {
+      console.error('Error fetching processing orders:', error);
+    }
+  };
+  const handleHistory = async () => {
+    try {
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const processingOrders = response.data.filter(order =>(order.Stare ===('finalizata'))&&order.NumeP===email);
       setOrders(processingOrders);
       console.log(processingOrders);
     } catch (error) {
@@ -76,7 +87,7 @@ const Cart = ({ email }) => {
       await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
       // Refetch orders after deletion
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
-      const filteredOrders = response.data.filter(order => order.Stare === email);
+      const filteredOrders = response.data.filter(order => order.NumeP === email);
       setOrders(filteredOrders);
       setSelectedOrderId(null); // Deselect the order after deletion
     } catch (error) {
@@ -90,7 +101,7 @@ const Cart = ({ email }) => {
       await axios.put(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`, { Cantitate: newQuantity });
       // Refetch orders after updating quantity
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
-      const filteredOrders = response.data.filter(order => order.Stare === email);
+      const filteredOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
       setOrders(filteredOrders);
     } catch (error) {
       console.error('Eroare la actualizarea cantității:', error);
@@ -101,12 +112,14 @@ const Cart = ({ email }) => {
     const orderToUpdate = orders.find(order => order._id === orderId);
     const newQuantity = orderToUpdate.Cantitate + 1;
     handleUpdateQuantity(orderId, newQuantity);
+   
   };
 
   const handleSubtractQuantity = (orderId) => {
     const orderToUpdate = orders.find(order => order._id === orderId);
     const newQuantity = orderToUpdate.Cantitate - 1 >= 0 ? orderToUpdate.Cantitate - 1 : 0;
     handleUpdateQuantity(orderId, newQuantity);
+
   };
   return (
     <div className='bodyuser'>
@@ -114,6 +127,7 @@ const Cart = ({ email }) => {
       <button onClick={handleBuyAll}>Buy All</button>
       <button onClick={handleShowProcessingOrders}>Show Processing Orders</button>
       <button onClick={handleShowcart}>Show Cart</button>
+      <button onClick={handleHistory}>Show History</button>
 
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {orders.map(order => (
@@ -126,9 +140,13 @@ const Cart = ({ email }) => {
                 <p><strong>Mărime:</strong> {order.Marime}</p>
                 <p><strong>Gen:</strong> {order.Gen}</p>
                 <p><strong>Stare:</strong> {order.Stare}</p>
-                <button onClick={() => handleAddQuantity(order._id)}>+</button>
-                <button onClick={() => handleSubtractQuantity(order._id)}>-</button>
-                <button onClick={() => handleDeleteOrder(order._id)}>Elimină</button>
+                {order.Stare === 'creare' && (
+            <>
+              <button onClick={() => handleAddQuantity(order._id)}>+</button>
+              <button onClick={() => handleSubtractQuantity(order._id)}>-</button>
+              <button onClick={() => handleDeleteOrder(order._id)}>Elimină</button>
+            </>
+          )}
             
               </div>
             </div>

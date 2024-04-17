@@ -31,9 +31,6 @@ function App() {
     }
   }, []);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -70,8 +67,8 @@ function App() {
         </div>
 
         <div className="tabs-content">
-          {!isLoggedIn && <Signup />}
-          {!isLoggedIn && <Login onLogin={handleLogin} />}
+          { <Signup />}
+          { <Login  />}
         </div>
       </div>
     </div>

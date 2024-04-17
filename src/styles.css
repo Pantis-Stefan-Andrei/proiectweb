@@ -19,10 +19,9 @@ h1 {
   /* set the text shadow */
   text-shadow: 6px 6px 2px #777777;
   /* set the padding */
-  padding: 100px;
-  /* add some blank on the top of this text */
-  
+  padding: 120px;
 
+line-height: 1;
 }
 
 a {

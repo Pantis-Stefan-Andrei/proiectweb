@@ -132,15 +132,15 @@ app.post('/api/users', async (req, res) => {
   const { email, password, account_type, username ,anstudiu} = req.body;
 
   try {
-    // Verificam daca toate câmpurile sunt completate
+    // Verificam daca toate cï¿½mpurile sunt completate
     if (!email || !password || !account_type || !username ) {
-      return res.status(400).json({ message: 'Toate câmpurile sunt obligatorii' });
+      return res.status(400).json({ message: 'Toate cï¿½mpurile sunt obligatorii' });
     }
 
     // Cream un nou produs
     const newusersvar = new User({  email, password, account_type, username,anstudiu});
 
-    // Salvam noul produs în baza de date
+    // Salvam noul produs ï¿½n baza de date
     await newusersvar.save();
 
     res.status(201).json({ message: 'Produs adaugat cu succes' });
@@ -171,7 +171,7 @@ const productSchema = new mongoose.Schema({
   Marime: String,
   Gen: String,
   Path: String,
-  // alte câmpuri relevante
+  // alte cï¿½mpuri relevante
 });
 
 // Crearea modelului Product pe baza schemei definite
@@ -191,15 +191,15 @@ app.post('/api/products', async (req, res) => {
   const { Nume, Cantitate, Marime, Gen, Path } = req.body;
 
   try {
-    // Verificam daca toate câmpurile sunt completate
+    // Verificam daca toate cï¿½mpurile sunt completate
     if (!Nume || !Cantitate || !Marime || !Gen || !Path ) {
-      return res.status(400).json({ message: 'Toate câmpurile sunt obligatorii' });
+      return res.status(400).json({ message: 'Toate cï¿½mpurile sunt obligatorii' });
     }
 
     // Cream un nou produs
     const newProduct = new Product({ Nume, Cantitate, Marime, Gen, Path });
 
-    // Salvam noul produs în baza de date
+    // Salvam noul produs ï¿½n baza de date
     await newProduct.save();
 
     res.status(201).json({ message: 'Produs adaugat cu succes' });
@@ -229,7 +229,7 @@ const orderSchema = new mongoose.Schema({
   Path: String,
   NumarPr: Number,
   Stare: String,
-  
+  NumeP: String,
 });
 
 // Crearea modelului Product pe baza schemei definite
@@ -246,18 +246,18 @@ app.get('/api/orders', async (req, res) => {
   }
 });
 app.post('/api/orders', async (req, res) => {
-  const {Nume, Cantitate, Marime, Gen, Path, Stare } = req.body;
+  const {Nume, Cantitate, Marime, Gen, Path, Stare , NumeP } = req.body;
 
   try {
-    // Verificam daca toate câmpurile sunt completate
-    if (!Nume || !Cantitate || !Marime || !Gen || !Path || !Stare) {
-      return res.status(400).json({ message: 'Toate câmpurile sunt obligatorii' });
+    // Verificam daca toate cï¿½mpurile sunt completate
+    if (!Nume || !Cantitate || !Marime || !Gen || !Path || !Stare || ! NumeP) {
+      return res.status(400).json({ message: 'Toate cï¿½mpurile sunt obligatorii' });
     }
 
     // Cream un nou produs
-    const neworders = new orders({Nume, Cantitate, Marime, Gen, Path, Stare });
+    const neworders = new orders({Nume, Cantitate, Marime, Gen, Path, Stare ,NumeP});
 
-    // Salvam noul produs în baza de date
+    // Salvam noul produs ï¿½n baza de date
     await neworders.save();
 
     res.status(201).json({ message: 'Produs adaugat cu succes' });
@@ -270,18 +270,18 @@ app.post('/api/neworders', async (req, res) => {
   const { Nume, Cantitate, Marime, Gen, Path, Stare } = req.body;
 
   try {
-    // Verificam daca toate câmpurile sunt completate
+    // Verificam daca toate cï¿½mpurile sunt completate
     if (!Nume || !Cantitate || !Marime || !Gen || !Path) {
-      return res.status(400).json({ message: 'Toate câmpurile sunt obligatorii' });
+      return res.status(400).json({ message: 'Toate cï¿½mpurile sunt obligatorii' });
     }
 
     // Ob?inem toate comenzile din baza de date
     const allOrders = await orders.find();
 
-    // Cream un obiect pentru a numara câte ordine con?in acelea?i detalii
+    // Cream un obiect pentru a numara cï¿½te ordine con?in acelea?i detalii
     const countMap = {};
 
-    // Parcurgem toate comenzile ?i numaram câte con?in acelea?i detalii
+    // Parcurgem toate comenzile ?i numaram cï¿½te con?in acelea?i detalii
     allOrders.forEach(order => {
       const key = [order.Nume, order.Cantitate, order.Marime, order.Gen, order.Path, order.Stare].join('|');
       countMap[key] = (countMap[key] || 0) + 1;
@@ -302,7 +302,7 @@ app.post('/api/neworders', async (req, res) => {
     // Cream un nou produs
     const newOrder = new orders({ Nume, Cantitate, Marime, Gen, Path, Stare });
 
-    // Salvam noul produs în baza de date
+    // Salvam noul produs ï¿½n baza de date
     await newOrder.save();
 
     // Returnam raspunsul JSON
@@ -361,7 +361,7 @@ app.post('/api/comments', async (req, res) => {
   try {
     const { productId, content, rating ,User} = req.body;
     if (!productId || !content ||!rating|| !User ) {
-      return res.status(400).json({ message: 'Toate câmpurile sunt obligatorii' });
+      return res.status(400).json({ message: 'Toate cï¿½mpurile sunt obligatorii' });
     }
     const newComment = new Comment({ productId, content, rating,User });
    

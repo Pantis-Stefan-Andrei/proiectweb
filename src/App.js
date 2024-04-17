@@ -60,11 +60,9 @@ const App = () => {
         <Route
           path="/"
           element={
-            userData ? (
+            (
               <Navigate to="/home" replace />
-            ) : (
-              <Login updateUser={updateUser} />
-            )
+            ) 
           }
         />
                  <Route path="/start" element={

@@ -64,7 +64,8 @@ const ProductPage = ({ product , email }) => {
     }
     try {
       console.log(product);
-      product.Stare = email;
+      product.Stare = 'creare';
+      product.NumeP=email;
       const copie = product.Cantitate;
       product.Cantitate = newOrder.quantity;
       const copie2 = product.Marime;

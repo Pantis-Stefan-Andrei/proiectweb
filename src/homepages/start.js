@@ -82,15 +82,59 @@ const RatingChart = () => {
       />
     );
   };
+  function shuffleArray(array) {
+    // Create a copy of the original array
+    const shuffledArray = [...array];
+    
+    // Fisher-Yates shuffle algorithm
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    
+    return shuffledArray;
+  }
+  const shuffledComments = shuffleArray(comments);
 
-  const topFourComments = comments.filter(comment => comment.rating === 5).slice(0, 4);
+  // Get the top four shuffled comments
+  const topFourShuffledComments = shuffledComments.slice(0, 4);
+  const [slidesToShow, setSlidesToShow] = useState(calculateSlidesToShow());
+
+  useEffect(() => {
+    function handleResize() {
+      // Update slides to show when window is resized
+      setSlidesToShow(calculateSlidesToShow());
+    }
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  function calculateSlidesToShow() {
+    // Calculate the number of slides to show based on viewport width
+    const viewportWidth = window.innerWidth;
+    if (viewportWidth >= 1200) {
+      return 4;
+    } else if (viewportWidth >= 992) {
+      return 3;
+    } else if (viewportWidth >= 768) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: slidesToShow,
+    slidesToScroll: slidesToShow, // You can adjust this according to your requirements
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
@@ -115,16 +159,16 @@ const RatingChart = () => {
         </div>
 
         <div className="top-comments-container">
-          <h2>Top Reactii:</h2>
-          <ul>
-            {topFourComments.map((comment, index) => (
-              <li className="comment-item" key={index}>
-                <strong>Echipamentul:</strong> {comment.productId} <br />
-                <strong>Reactia:</strong> {comment.content}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <h2>Top Reactii:</h2>
+      <ul className="comment-list">
+        {topFourShuffledComments.map((comment, index) => (
+          <li className="comment-item" key={index}>
+            <strong>Echipamentul:</strong> {comment.productId} <br />
+            <strong>Reactia:</strong> {comment.content}
+          </li>
+        ))}
+      </ul>
+    </div>
       </div>
     </div>
   );

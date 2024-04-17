@@ -6,7 +6,7 @@ function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [account_type, setType] = useState('');
-  const [anstudii, setYears] = useState('');
+  const [anstudii, setYears] = useState('0');
   const [email, setEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
@@ -63,8 +63,8 @@ function Signup() {
       state: {
         username,
         email,
-        account_type,
-        isLoggedIn
+        account_type
+       
       }
       });
     }
@@ -77,7 +77,7 @@ function Signup() {
         <input type="text" className="input"  id="user_name" autoComplete="off" placeholder="Username" value={username} onChange={handleusenameChange}/>
         <input type="password" className="input"  id="user_pass" autoComplete="off" placeholder="Password" value={password} onChange={handlePasswordChange}/>
         <input type="text" className="input" id="user_ype" autoComplete="off" placeholder="Account Type" value={account_type} onChange={handleaccountTypeChange}/>
-        <input type="text" className="input"  id="user_year" autoComplete="off" placeholder="Study Year" value={anstudii} onChange={handleanstudiiChange}/>
+        <input type="number" className="input"  id="user_year" autoComplete="off" placeholder="Study Year" value={anstudii} onChange={handleanstudiiChange}/>
         <input type="submit" className="button"  value="Sign Up" />
       </form>
       <div className="help-text">
