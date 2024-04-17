@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaSearch } from 'react-icons/fa'; 
 import ProductPage from './ProductPage';
 import './Students.css'; 
 
-const ProductsListPage =  ({ email }) => {
+const ProductsListPage = ({ email })  => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [query, setQuery] = useState('');
+
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://sundbserver.azurewebsites.net/api/products')
       .then(response => {
         // Filter products based on 'gen' property
         const filteredProducts = response.data.filter(product => {
@@ -24,7 +27,7 @@ const ProductsListPage =  ({ email }) => {
         setLoading(false);
       });
   }, []);
-
+  
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -34,16 +37,35 @@ const ProductsListPage =  ({ email }) => {
     setSelectedProduct(null);
   };
 
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.Nume.toLowerCase().includes(query.toLowerCase())
+  );
+
+
   return (
     <div className="cont">
       {selectedProduct ? (
         <ProductPage product={selectedProduct} email={email} onClose={handleReset} />
       ) : (
-        <div className="products">
+        <div className='product-display'>
+        <div className='search-container'>
+        <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={query}
+            onChange={handleInputChange}
+          />
+          </div>
+          <div className="products">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            products.map(product => (
+            filteredProducts.map(product => (
               <div
                 className="product"
                 key={product.id}
@@ -58,9 +80,11 @@ const ProductsListPage =  ({ email }) => {
             ))
           )}
         </div>
+        </div>
       )}
     </div>
   );
-};
 
+
+};
 export default ProductsListPage;

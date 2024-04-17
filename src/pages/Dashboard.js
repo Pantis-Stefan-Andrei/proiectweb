@@ -21,7 +21,7 @@ const Dashboard = () => {
   const userChartRef = useRef(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://sundbserver.azurewebsites.net/api/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -29,7 +29,7 @@ const Dashboard = () => {
         console.error('Eroare la preluarea produselor:', error);
       });
 
-    axios.get('http://localhost:5000/api/users')
+    axios.get('https://sundbserver.azurewebsites.net/api/users')
       .then(response => {
         setUsers(response.data);
       })

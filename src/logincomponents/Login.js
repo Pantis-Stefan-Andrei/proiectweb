@@ -25,7 +25,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('https://sundbserver.azurewebsites.net/api/login', {
         email,
         password,
       });

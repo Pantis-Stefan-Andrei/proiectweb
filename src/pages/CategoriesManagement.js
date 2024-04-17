@@ -15,7 +15,7 @@ const CategoriesManagement = () => {
     User: ''
   });
   useEffect(() => {
-    axios.get('http://localhost:5000/api/allcomments')
+    axios.get('https://sundbserver.azurewebsites.net/api/allcomments')
       .then(response => {
         setorders(response.data);
       })
@@ -35,9 +35,9 @@ const CategoriesManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/comments', neworder);
+      await axios.post('https://sundbserver.azurewebsites.net/api/comments', neworder);
       // Refetch orders after adding new order
-      const response = await axios.get('http://localhost:5000/api/allcomments');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/allcomments');
       setorders(response.data);
       // Reset form
       setNeworder({
@@ -54,9 +54,9 @@ const CategoriesManagement = () => {
   };
   const handleDeleteorder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/comments/${orderId}`);
+      await axios.delete(`https://sundbserver.azurewebsites.net/api/comments/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('http://localhost:5000/api/allcomments');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/allcomments');
       setorders(response.data);
       setSelectedorderId(null); // Deselect the order after deletion
     } catch (error) {

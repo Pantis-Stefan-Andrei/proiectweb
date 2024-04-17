@@ -36,7 +36,7 @@ function Signup() {
   const handleSignup = async () => {
     console.log(   email,username,password,account_type,anstudii);
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post('https://sundbserver.azurewebsites.net/api/signup', {
         email, 
       username,
         password,

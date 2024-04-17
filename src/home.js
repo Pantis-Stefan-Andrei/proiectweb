@@ -46,7 +46,7 @@ const App = ({ }) => { // Destructure props
 
    
   
-navigate('/');
+navigate('/start');
   };
 
   return (

@@ -1,41 +1,61 @@
-
-
-
-
 .cont {
   max-width: 1200px;
-
-  margin: auto; /* Removed the 0 */
+  margin: auto;
   opacity: 0;
   animation: fadeInOut 1s ease-in-out forwards;
+  
 }
 
 .title {
   text-align: center;
 }
+.product-image {
+  width: 100%; /* Adjust width as desired */
+  height: auto; /* Set height to auto to maintain aspect ratio */
 
-.product-grid { 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+.product-display {
+  /* Add any styles for the container of the product display */
 }
 
+.products{ display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 800px; /* Fixed height for all products */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+.search-icon {
+  margin-right: 10px; 
+}
+
+
 .product {
+  
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 20px;
+ 
+    width: 100%; 
+    height: auto; 
+  
   overflow: hidden;
-  transition: transform 0.3s ease; /* Added transition for smooth effect */
+  transition: transform 0.3s ease;
 }
 
 .product-link {
   display: block;
   text-decoration: none;
   color: inherit;
+  
 }
 
-.product-image {
-  width: 100%; /* Changed width to 100% */
-  height: auto; /* Changed height to auto */
-}
 
 .product-name {
   margin: 0;
@@ -43,11 +63,12 @@
 }
 
 .product:hover {
-  transform: scale(1.05); /* Added hover effect to scale the product */
+  transform: scale(1.05);
+  
 }
 
 @keyframes fadeInOut {
   0% { opacity: 0; }
-  80% { opacity: 1; } 
+  80% { opacity: 1; }
   100% { opacity: 1; }
 }

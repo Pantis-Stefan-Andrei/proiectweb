@@ -3,7 +3,7 @@ import Logo from './Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({  handlePageChange, handleLogout }) => {
+const Navbar = ({ handlePageChange, handleLogout }) => {
   const [showUserPopup, setShowUserPopup] = useState(false);
   const [showCartPopup, setShowCartPopup] = useState(false);
 
@@ -12,11 +12,6 @@ const Navbar = ({  handlePageChange, handleLogout }) => {
     handlePageChange('USER');
   };
 
-    const [darkMode, setDarkMode] = useState(false);
-  
-    const toggleDarkMode = () => {
-      setDarkMode(!darkMode);
-    };
   const toggleCartPopup = () => {
     setShowCartPopup(!showCartPopup);
     handlePageChange('CART');
@@ -35,20 +30,15 @@ const Navbar = ({  handlePageChange, handleLogout }) => {
         <button className="nav-button" onClick={() => handlePageChange('CONTACT')}>CONTACT</button>
       </div>
       <div className="right-section">
-      
-      {  (
-          <>
-            {/* Icon for logout */}
-            <button className="icon-button" onClick={handleLogout}>
-              <FontAwesomeIcon icon={faUser} onClick={toggleUserPopup} />
-              LogOut
-            </button>
-            
-            <FontAwesomeIcon className="icon" icon={faUser} onClick={toggleUserPopup} />
-            
-            <FontAwesomeIcon className="icon" icon={faShoppingCart} onClick={toggleCartPopup} />
-          </>
-        )}
+        {/* Icon for logout */}
+        <button className="icon-button" onClick={handleLogout}>
+          <FontAwesomeIcon icon={faUser} onClick={toggleUserPopup} />
+          LogOut
+        </button>
+        {/* Icon for user */}
+        <FontAwesomeIcon className="icon" icon={faUser} onClick={toggleUserPopup} />
+        {/* Icon for cart */}
+        <FontAwesomeIcon className="icon" icon={faShoppingCart} onClick={toggleCartPopup} />
       </div>
     </div>
   );

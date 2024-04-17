@@ -13,7 +13,7 @@ const ProductsManagement = () => {
     NouaColoana: '' // Adăugăm și noua coloană în starea componentei
   });
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://sundbserver.azurewebsites.net/api/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -33,9 +33,9 @@ const ProductsManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/products', newProduct);
+      await axios.post('https://sundbserver.azurewebsites.net/api/products', newProduct);
       // Refetch products after adding new product
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/products');
       setProducts(response.data);
       // Reset form
       setNewProduct({
@@ -52,9 +52,9 @@ const ProductsManagement = () => {
   };
   const handleDeleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/products/${productId}`);
+      await axios.delete(`https://sundbserver.azurewebsites.net/api/products/${productId}`);
       // Refetch products after deletion
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/products');
       setProducts(response.data);
       setSelectedProductId(null); // Deselect the product after deletion
     } catch (error) {

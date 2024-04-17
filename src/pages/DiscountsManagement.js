@@ -7,7 +7,7 @@ const DiscountsManagement = () => {
   const [selectedorderId, setSelectedorderId] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/problemsg')
+    axios.get('https://sundbserver.azurewebsites.net/api/problemsg')
       .then(response => {
         setproblems(response.data);
       })
@@ -20,9 +20,9 @@ const DiscountsManagement = () => {
  
   const handleDeleteorder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/problems/${orderId}`);
+      await axios.delete(`https://sundbserver.azurewebsites.net/api/problems/${orderId}`);
       // Refetch problems after deletion
-      const response = await axios.get('http://localhost:5000/api/problems');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/problems');
       setproblems(response.data);
       setSelectedorderId(null); // Deselect the order after deletion
     } catch (error) {

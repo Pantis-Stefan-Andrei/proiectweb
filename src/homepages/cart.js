@@ -20,7 +20,7 @@ const Cart = ({ email }) => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       const filteredOrders = response.data.filter(order => order.Stare === email);
       setOrders(filteredOrders);
     } catch (error) {
@@ -30,17 +30,17 @@ const Cart = ({ email }) => {
 
   const handleBuyAll = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
 
       const processingOrders = response.data.filter(order => order.Stare === email);
    
       // Assuming there might be multiple processing orders, updating each one
       for (const order of processingOrders) {
         const order2=order;
-        await axios.delete(`http://localhost:5000/api/orders/${order._id}`);
+        await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${order._id}`);
         order2.Stare = 'Processing '+email;
         console.log(order2);
-        await axios.post('http://localhost:5000/api/orders', order2);
+        await axios.post('https://sundbserver.azurewebsites.net/api/orders', order2);
     
       }
       setOrders(processingOrders);
@@ -53,7 +53,7 @@ const Cart = ({ email }) => {
   };
   const handleShowProcessingOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       const processingOrders = response.data.filter(order => order.Stare ===('Processing '+email));
       setOrders(processingOrders);
       console.log(processingOrders);
@@ -63,7 +63,7 @@ const Cart = ({ email }) => {
   };
   const handleShowcart = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       const processingOrders = response.data.filter(order => order.Stare ===email);
       setOrders(processingOrders);
       console.log(processingOrders);
@@ -73,9 +73,9 @@ const Cart = ({ email }) => {
   };
   const handleDeleteOrder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`);
+      await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       const filteredOrders = response.data.filter(order => order.Stare === email);
       setOrders(filteredOrders);
       setSelectedOrderId(null); // Deselect the order after deletion
@@ -87,9 +87,9 @@ const Cart = ({ email }) => {
   const handleUpdateQuantity = async (orderId, newQuantity) => {
     try {
       // Update quantity for the selected order
-      await axios.put(`http://localhost:5000/api/orders/${orderId}`, { Cantitate: newQuantity });
+      await axios.put(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`, { Cantitate: newQuantity });
       // Refetch orders after updating quantity
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       const filteredOrders = response.data.filter(order => order.Stare === email);
       setOrders(filteredOrders);
     } catch (error) {

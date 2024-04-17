@@ -36,7 +36,7 @@ const ProductPage = ({ product , email }) => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/comments/${product.Nume}`);
+      const response = await axios.get(`https://sundbserver.azurewebsites.net/api/comments/${product.Nume}`);
 
       setComments(response.data);
     } catch (error) {
@@ -70,7 +70,7 @@ const ProductPage = ({ product , email }) => {
       const copie2 = product.Marime;
       product.Marime = newOrder.size;
       // Include size in the product object sent to the server
-      await axios.post('http://localhost:5000/api/orders', product);
+      await axios.post('https://sundbserver.azurewebsites.net/api/orders', product);
       product.Cantitate = copie;
       product.Marime = copie2;
       // Optionally, reset the form state after successful submission
@@ -89,7 +89,7 @@ const ProductPage = ({ product , email }) => {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/comments', { productId: product.Nume, content: newComment, rating: newRating,User: email });
+      await axios.post('https://sundbserver.azurewebsites.net/api/comments', { productId: product.Nume, content: newComment, rating: newRating,User: email });
       setNewComment('');
       setNewRating(0);
       fetchComments(); // Refetch comments after adding new one

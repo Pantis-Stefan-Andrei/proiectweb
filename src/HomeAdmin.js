@@ -39,7 +39,7 @@ const HomeAdmin = ({}) => {
 
    
   
-navigate('/');
+    navigate('/start');
   };
   function toggleSidebar() {
     var sidebar = document.querySelector('.sidebar');

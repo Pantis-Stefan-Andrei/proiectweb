@@ -20,7 +20,7 @@ const RatingChart = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/allcomments`);
+        const response = await axios.get(`https://sundbserver.azurewebsites.net/api/allcomments`);
       
         setComments(response.data);
       } catch (error) {

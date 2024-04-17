@@ -15,7 +15,7 @@ const OrdersManagement = () => {
     Stare: ''
   });
   useEffect(() => {
-    axios.get('http://localhost:5000/api/orders')
+    axios.get('https://sundbserver.azurewebsites.net/api/orders')
       .then(response => {
         setorders(response.data);
       })
@@ -35,9 +35,9 @@ const OrdersManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/orders', neworder);
+      await axios.post('https://sundbserver.azurewebsites.net/api/orders', neworder);
       // Refetch orders after adding new order
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       setorders(response.data);
       // Reset form
       setNeworder({
@@ -54,9 +54,9 @@ const OrdersManagement = () => {
   };
   const handleDeleteorder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`);
+      await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
       setorders(response.data);
       setSelectedorderId(null); // Deselect the order after deletion
     } catch (error) {
