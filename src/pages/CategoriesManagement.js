@@ -69,7 +69,7 @@ const CategoriesManagement = () => {
       <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
     
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-          <label style={{ marginRight: '10px', minWidth: '120px' }}>ProductId:</label>
+          <label style={{ marginRight: '10px', minWidth: '120px' }}>Nume Produs:</label>
           <input type="text" name="productId" value={neworder.productId} onChange={handleChange} style={{ flex: 1, padding: '5px' }} />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
@@ -93,7 +93,7 @@ const CategoriesManagement = () => {
         <thead>
           <tr>
             
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>ProductId</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Nume Produs</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Content</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Rating</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>User</th>

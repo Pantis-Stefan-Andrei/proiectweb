@@ -72,8 +72,8 @@ const HomeAdmin = ({}) => {
 <li className={selectedPage === 'CategoriesManagement' ? 'activ' : ''} onClick={() => handlePageChange('CategoriesManagement')}>Gestionare comentarii</li>
 <li className={selectedPage === 'DiscountsManagement' ? 'activ' : ''} onClick={() => handlePageChange('DiscountsManagement')}>Gestionare probleme</li>
 <li className={selectedPage === 'ReportsAnalytics' ? 'activ' : ''} onClick={() => handlePageChange('ReportsAnalytics')}>Rapoarte și analize</li>
-<li className={selectedPage === 'Settings' ? 'activ' : ''} onClick={() => handlePageChange('Settings')}>Setări</li>
 <li className={selectedPage === 'StaffManagement' ? 'activ' : ''} onClick={() => handlePageChange('StaffManagement')}>Gestionare personal</li>
+<li className={selectedPage === 'Settings' ? 'activ' : ''} onClick={() => navigate('/home')}>Schimbare mod vizualizare</li>
 <li className={selectedPage === 'Logout' ? 'activ' : ''} onClick={() => handleLogout()}>Delogare <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> </li>
 
         </ul>
