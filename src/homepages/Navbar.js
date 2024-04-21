@@ -33,7 +33,7 @@ const Navbar = ({ handlePageChange, handleLogout }) => {
         {/* Icon for logout */}
         <button className="icon-button" onClick={handleLogout}>
           <FontAwesomeIcon icon={faUser} onClick={toggleUserPopup} />
-          LogOut
+            LogOut
         </button>
         {/* Icon for user */}
         <FontAwesomeIcon className="icon" icon={faUser} onClick={toggleUserPopup} />

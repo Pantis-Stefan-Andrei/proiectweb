@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './ProductsManagement'
 const CustomersManagement = () => {
   const [users, setusers] = useState([]);
   const [selecteduserId, setSelecteduserId] = useState(null);

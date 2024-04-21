@@ -33,13 +33,13 @@
     width: 106%;
   
   }
-.product-name2 {
-    font-size: 28px; /* Increase font size */
+  .product-name2 {
+    font-size: 40px; /* Increase font size */
     font-weight: bold;
     margin-bottom: 15px; /* Increase margin */
     color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
-
 .product-description {
     font-size: 18px; /* Increase font size */
     margin-bottom: 15px; /* Increase margin */

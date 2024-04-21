@@ -2,38 +2,44 @@
 
 .home-admin-container {
   display: flex;
-  position: relative; /* Added position relative for proper positioning of toggle button */
+  position: relative;
 }
-body {
-  font-family: 'Roboto', sans-serif;
-}
+
 .sidebar {
-  width: 180px; /* Decreased width */
-  height: 100%; /* Added height to fill the entire height */
+
+  top: 0; 
+  left: 0;
+  width: 20%; 
+  height: auto; 
+  max-width: 150px;
   background-color: #222;
   color: #fff;
   padding: 5px;
   transition: width 0.3s ease-in-out;
-  overflow: auto; /* AdaugÄƒ scrollbar atunci cÃ¢nd conÈ›inutul depÄƒÈ™eÈ™te dimensiunea containerului */
-  overflow-y: auto; /* AsigurÄƒ cÄƒ scrollbar-ul este doar vertical */
-  height: auto; /* SeteazÄƒ Ã®nÄƒlÈ›imea pentru a ocupa Ã®ntreaga Ã®nÄƒlÈ›ime a ferestrei browser-ului */
-  scrollbar-width: thin; /* Dimensiunea scrollbar-ului */
-scrollbar-color: #888 #222; /* Culoarea thumb-ului È™i a track-ului */
-
+  overflow-y: fixed;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #222;
 }
 
+.main-content {
+  flex: 1;
+  padding: 20px 40px;
+  transition: margin-left 0.3s ease-in-out; /* Efect de tranziție pentru margin-left */
+}
 
 
 .profile-picture {
-  width: 140px; /* MÄƒrim dimensiunea imaginii */
-  height: 140px;
-  border-radius: 50%; /* PÄƒstrÄƒm conturul Ã®n formÄƒ de cerc */
-  margin-bottom: 20px; /* CreÈ™tem spaÈ›iul Ã®ntre imagine È™i text */
-  margin-top: 20px; /* MutÄƒm imaginea mai jos */
-  display: block; /* SetÄƒm afiÈ™area ca bloc pentru a putea centra */
-  margin-left: auto; /* CentrÄƒm imaginea pe orizontalÄƒ */
-  margin-right: auto;
+  width: 100%; /* Folosim 20% din lățimea ferestrei de vizualizare pentru imagine */
+  max-width: 120px; /* Limităm lățimea maximă a imaginii */
+  height: auto; /* Înălțimea se va scala proporțional cu lățimea */
+  border-radius: 50%; /* Păstrăm conturul în formă de cerc */
+  margin-bottom: 5%; /* Folosim 5% din înălțimea ferestrei de vizualizare pentru a menține distanța */
+  margin-top: 5%; /* Folosim 5% din înălțimea ferestrei de vizualizare pentru a menține distanța */
+  display: block; /* Setăm afișarea ca bloc pentru a putea centra */
+  margin-left: auto; /* Centrăm imaginea pe orizontală */
+  margin-right: auto; /* Centrăm imaginea pe orizontală */
 }
+
 .sidebar h2 {
   text-align: center; /* CentrÄƒm titlul */
   font-size: 24px; /* MÄƒrim dimensiunea textului */
@@ -50,7 +56,7 @@ scrollbar-color: #888 #222; /* Culoarea thumb-ului È™i a track-ului */
   list-style-type: none;
   padding: 0;
   text-align: center; /* CentrÄƒm titlul */
-  font-size: 20px;; /* MÄƒrim dimensiunea textului */
+  font-size: auto;; /* MÄƒrim dimensiunea textului */
   margin-top: 16px; /* SpaÈ›iu suplimentar Ã®ntre titlu È™i imagine */
   color: #13b894;
   
@@ -70,12 +76,7 @@ scrollbar-color: #888 #222; /* Culoarea thumb-ului È™i a track-ului */
   cursor: pointer;
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px 40px; 
-  transition: margin-left 0.3s ease-in-out;
-  
-}
+
 
 /* Styling for the toggle button */
 .toggle-button {
@@ -124,3 +125,4 @@ scrollbar-color: #888 #222; /* Culoarea thumb-ului È™i a track-ului */
 .sidebar-closed .toggle-button {
   left: 5px;
 }
+

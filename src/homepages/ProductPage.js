@@ -23,6 +23,7 @@ const StarRating = ({ rating, onChange }) => {
 
 const ProductPage = ({ product , email }) => {
   // Ensure product.Path is converted to string
+ 
   const imagePath = String(product.Path);
   const [newOrder, setNewOrder] = useState({ quantity: 1, size: '' }); // Initialize quantity with 1
   const [comments, setComments] = useState([]);
@@ -32,6 +33,7 @@ const ProductPage = ({ product , email }) => {
 
   useEffect(() => {
     fetchComments();
+    window.scrollTo(0, 0);
   }, []);
 
   const fetchComments = async () => {
@@ -102,6 +104,7 @@ const ProductPage = ({ product , email }) => {
   };
 
   return (
+    
     <div className="product-page-container">
       <div className="product-details">
         <div className="product-image-container">

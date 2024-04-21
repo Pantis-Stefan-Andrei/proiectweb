@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './ProductsManagement'
 const DiscountsManagement = () => {
   const [problems, setproblems] = useState([]);
   const [selectedorderId, setSelectedorderId] = useState(null);

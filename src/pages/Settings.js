@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './ProductsManagement'
 const AdminSettingsPage = () => {
   // Starea pentru a gestiona diversele opțiuni de setări
   const [shopName, setShopName] = useState('');

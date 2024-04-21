@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Bar, Chart}  from 'react-chartjs-2';
 
 import 'chart.js/auto'; 
+import './ProductsManagement'
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
