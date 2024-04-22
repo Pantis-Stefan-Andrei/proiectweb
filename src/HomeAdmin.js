@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const HomeAdmin = ({}) => {
   const [selectedPage, setSelectedPage] = useState('Dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   
   const [email, setEmail] = useState('');
@@ -21,15 +21,19 @@ const HomeAdmin = ({}) => {
       console.log(storedUser);
       setUsername(storedUser.username); // Change to setUsername
       setEmail(storedUser.email); // Change to setEmail
-      setAccountType(storedUser.accountType); // Change to setAccountType
+      setAccountType(storedUser.account_type); // Change to setAccountType
+      if(storedUser.account_type!='admin')
+      navigate('/home');
    
-    }
+    }else
+    {   navigate('/home');}
   }, []);
 
   const handlePageChange = (pageName) => {
+  
     setSelectedPage(pageName);
   };
-  const navigate = useNavigate();
+  
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

@@ -9,6 +9,7 @@ const App = () => {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
+    console.log(storedUser);
     if (storedUser) {
       setUserData(storedUser);
     }
@@ -19,49 +20,38 @@ const App = () => {
     localStorage.setItem('user', JSON.stringify(newUserData));
   };
 
-  const logout = () => {
-    setUserData(null);
-    localStorage.removeItem('user');
-  };
-
+ 
   return (
     <Router>
       <Routes>
         <Route
           path="/adminhome"
+          
+          
           element={
-            userData ? (
               <HomeAdm
-                name={userData.username}
-                email={userData.email}
-                accountType={userData.accountType}
-                logout={logout}
+              
+            
               />
-            ) : (
-              <Navigate to="/" replace />
-            )
+            
           }
         />
         <Route
           path="/home"
           element={
-            userData ? (
-              <Home
-                name={userData.username}
-                email={userData.email}
-                accountType={userData.accountType}
-                logout={logout}
+             <Home
+                
+             
               />
-            ) : (
-              <Navigate to="/" replace />
-            )
+           
+            
           }
         />
         <Route
           path="/"
           element={
             (
-              <Navigate to="/home" replace />
+              <Navigate to="/start" replace />
             ) 
           }
         />

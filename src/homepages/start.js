@@ -40,6 +40,7 @@ const RatingChart = () => {
   };
 
   const renderChart = () => {
+    
     if (!chartLoaded) {
       return <div>Loading chart...</div>;
     }

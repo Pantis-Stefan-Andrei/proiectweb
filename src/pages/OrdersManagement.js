@@ -146,7 +146,7 @@ await axios.post('https://sundbserver.azurewebsites.net/api/products', prod2);
       </form>
 
 
-      <h2 style={{ marginBottom: '20px' }}>Gestionare</h2>
+      <h2 style={{ marginBottom: '20px' }}>Gestionare elemente nefinalizate</h2>
       <table style={{ borderCollapse: 'collapse', width: '100%' }}>
         <thead>
           <tr>
@@ -161,22 +161,65 @@ await axios.post('https://sundbserver.azurewebsites.net/api/products', prod2);
           </tr>
         </thead>
         <tbody>
-          {orders.map(order => (
-            <tr key={order._id} style={{ backgroundColor: selectedorderId === order._id ? '#ccc' : 'transparent' }} onClick={() => setSelectedorderId(order._id)}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Nume}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Cantitate}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Marime}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Gen}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Path}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Stare}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.NumeP}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}><button onClick={() => handleresolve(order._id)}>Procesare</button><button onClick={() => handleDeleteorder(order._id)}>Șterge</button></td> {/* Buton de ștergere */}
-            </tr>
-          ))}
-        </tbody>
+  {orders.map(order => (
+    order.Stare !== 'finalizata' && (
+      <tr key={order._id} style={{ backgroundColor: selectedorderId === order._id ? '#ccc' : 'transparent' }} onClick={() => setSelectedorderId(order._id)}>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Nume}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Cantitate}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Marime}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Gen}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Path}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Stare}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.NumeP}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+          <button onClick={() => handleresolve(order._id)}>Procesare</button>
+          <button onClick={() => handleDeleteorder(order._id)}>Șterge</button> {/* Buton de ștergere */}
+        </td>
+      </tr>
+    )
+  ))}
+</tbody>
+
+      </table>
+      
+      <h2 style={{ marginBottom: '20px' }}>Gestionare elemente finalizate</h2>
+      <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+        <thead>
+          <tr>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Nume</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Cantitate</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Marime</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>gen</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Path</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Stare</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Destinatar</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Acțiuni</th> {/* Coloană pentru butonul de ștergere */}
+          </tr>
+        </thead>
+        <tbody>
+  {orders.map(order => (
+    order.Stare === 'finalizata' && (
+      <tr key={order._id} style={{ backgroundColor: selectedorderId === order._id ? '#ccc' : 'transparent' }} onClick={() => setSelectedorderId(order._id)}>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Nume}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Cantitate}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Marime}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Gen}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Path}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.Stare}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>{order.NumeP}</td>
+        <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+          
+          <button onClick={() => handleDeleteorder(order._id)}>Șterge</button> {/* Buton de ștergere */}
+        </td>
+      </tr>
+    )
+  ))}
+</tbody>
+
       </table>
     </div>
   );
 };
 
+  
 export default OrdersManagement;

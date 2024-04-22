@@ -20,7 +20,21 @@ const StarRating = ({ rating, onChange }) => {
 
   return <div>{stars}</div>;
 };
+const StarRating2 = ({ rating }) => {
+  const stars = [];
 
+ 
+
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <span key={i} className="star" >
+        {i <= rating ? '\u2605' : '\u2606'}
+      </span>
+    );
+  }
+
+  return <div>{stars}</div>;
+};
 const ProductPage = ({ product , email }) => {
   // Ensure product.Path is converted to string
  
@@ -30,7 +44,7 @@ const ProductPage = ({ product , email }) => {
   const [newComment, setNewComment] = useState('');
   const [newRating, setNewRating] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [errorMessage2, setErrorMessage2] = useState('');
   useEffect(() => {
     fetchComments();
     window.scrollTo(0, 0);
@@ -88,7 +102,7 @@ const ProductPage = ({ product , email }) => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (newRating === 0) {
-      setErrorMessage('Please select a rating before posting a comment.');
+      setErrorMessage2('Please select a rating before posting a comment.');
       return;
     }
     try {
@@ -96,10 +110,10 @@ const ProductPage = ({ product , email }) => {
       setNewComment('');
       setNewRating(0);
       fetchComments(); // Refetch comments after adding new one
-      setErrorMessage('');
+      setErrorMessage2('');
     } catch (error) {
       console.error('Error adding comment:', error);
-      setErrorMessage('Error adding comment. Please try again later.');
+      setErrorMessage2('Error adding comment. Please try again later.');
     }
   };
 
@@ -144,7 +158,7 @@ const ProductPage = ({ product , email }) => {
           <textarea value={newComment} onChange={handleCommentChange} placeholder="Add a comment"></textarea>
           <StarRating rating={newRating} onChange={handleRatingChange} />
           <button type="submit">Post Comment</button>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {errorMessage2 && <p className="error-message">{errorMessage2}</p>}
         </form>
         <section>
   <h2>Comentarii:</h2>
@@ -152,7 +166,7 @@ const ProductPage = ({ product , email }) => {
     {comments.map((comment, index) => (
       <li key={index}>
         <div class="comment">
-          <StarRating rating={comment.rating} />
+          <StarRating2 rating={comment.rating} />
           <p class="comment-content">{comment.content}</p>
           <p class="comment-user">{comment.User}</p>
         </div>

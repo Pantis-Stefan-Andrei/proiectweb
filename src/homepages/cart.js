@@ -33,7 +33,7 @@ const Cart = ({ email }) => {
     try {
       const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
 
-      const processingOrders = response.data.filter(order => order.NumeP === email);
+      const processingOrders = response.data.filter(order => (order.Stare ===('creare'))&&order.NumeP===email);
    
       // Assuming there might be multiple processing orders, updating each one
       for (const order of processingOrders) {
