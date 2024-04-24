@@ -19,7 +19,7 @@ function UserPage({ email }) {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.post('https://sundbserver.azurewebsites.net/api/email', { email });
+      const response = await axios.post('https://server-9ib4.onrender.com/api/email', { email });
       setUser(response.data.user);
     } catch (error) {
       console.error('Error fetching user:', error);
@@ -35,7 +35,7 @@ function UserPage({ email }) {
     try {
       const { password, account_type, username, anstudiu } = formData;
       const updatedUserData = { ...user, password, account_type, username, anstudiu };
-      await axios.post('https://sundbserver.azurewebsites.net/api/schimbadate', updatedUserData);
+      await axios.post('https://server-9ib4.onrender.com/api/schimbadate', updatedUserData);
       // Refresh user data after updating
       fetchUserData();
     } catch (error) {
@@ -46,7 +46,7 @@ function UserPage({ email }) {
   const handleDelete = async () => {
     try {
      
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/users/${user.id}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/users/${user.id}`);
       setUser({});
       
    

@@ -13,7 +13,7 @@ const ProductsManagement = () => {
     NouaColoana: '' // Adăugăm și noua coloană în starea componentei
   });
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/products')
+    axios.get('https://server-9ib4.onrender.com/api/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -33,9 +33,9 @@ const ProductsManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://sundbserver.azurewebsites.net/api/products', newProduct);
+      await axios.post('https://server-9ib4.onrender.com/api/products', newProduct);
       // Refetch products after adding new product
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/products');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/products');
       setProducts(response.data);
       // Reset form
       setNewProduct({
@@ -52,9 +52,9 @@ const ProductsManagement = () => {
   };
   const handleDeleteProduct = async (productId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/products/${productId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/products/${productId}`);
       // Refetch products after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/products');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/products');
       setProducts(response.data);
       setSelectedProductId(null); // Deselect the product after deletion
     } catch (error) {

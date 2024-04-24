@@ -13,7 +13,7 @@ const CustomersManagement = () => {
     anstudiu: 0
   });
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/users')
+    axios.get('https://server-9ib4.onrender.com/api/users')
       .then(response => {
         setusers(response.data);
       })
@@ -33,9 +33,9 @@ const CustomersManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://sundbserver.azurewebsites.net/api/users', newuser);
+      await axios.post('https://server-9ib4.onrender.com/api/users', newuser);
       // Refetch users after adding new user
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/users');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/users');
       setusers(response.data);
       // Reset form
       setNewuser({
@@ -51,9 +51,9 @@ const CustomersManagement = () => {
   };
   const handleDeleteuser = async (userId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/users/${userId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/users/${userId}`);
       // Refetch users after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/users');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/users');
       setusers(response.data);
       setSelecteduserId(null); // Deselect the user after deletion
     } catch (error) {

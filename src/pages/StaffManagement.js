@@ -12,7 +12,7 @@ const StaffManagement = () => {
     username: ''
   });
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/users')
+    axios.get('https://server-9ib4.onrender.com/api/users')
       .then(response => {
         setusers(response.data);
       })
@@ -32,10 +32,10 @@ const StaffManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://sundbserver.azurewebsites.net/api/users', newuser);
+      const response = await axios.post('https://server-9ib4.onrender.com/api/users', newuser);
       if (response.data.account_type !== 'student') {
         // Refetch users after adding new user
-        const updatedUsers = await axios.get('https://sundbserver.azurewebsites.net/api/users');
+        const updatedUsers = await axios.get('https://server-9ib4.onrender.com/api/users');
         setusers(updatedUsers.data);
         // Reset form
         setNewuser({
@@ -54,9 +54,9 @@ const StaffManagement = () => {
 
   const handleDeleteuser = async (userId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/users/${userId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/users/${userId}`);
       // Refetch users after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/users');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/users');
       setusers(response.data);
       setSelecteduserId(null); // Deselect the user after deletion
     } catch (error) {

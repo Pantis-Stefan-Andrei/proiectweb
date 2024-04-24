@@ -12,7 +12,7 @@ const ProductsListPage = ({ email ,type}) => {
   const [sortedProducts, setSortedProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/products')
+    axios.get('https://server-9ib4.onrender.com/api/products')
       .then(response => {
         const filteredProducts = response.data.filter(product => {
           return product.Gen === 'Unisex' || product.Gen === type;

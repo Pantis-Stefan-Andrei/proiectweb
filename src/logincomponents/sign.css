@@ -1,0 +1,92 @@
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .button:hover {
+    background-color: #45a049; /* Darker Green */
+  }
+  
+  .button:active {
+    background-color: #3e8e41;
+    transform: translateY(2px);
+  }
+  .signup-form2 {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signup-form2 input[type="text"],
+  .signup-form2 input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .signup-form2 input[type="password"],
+  .signup-form2 textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signup-form2 input[type="submit2"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .signup-form2 input[type="submit2"]:hover {
+    background-color: #45a049; /* Darker Green */
+  }
+  
+  .signup-form2 input[type="submit2"]:active {
+    background-color: #3e8e41;
+   
+  }
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+    font-size: 16px; /* Text size */
+    cursor: pointer;
+  }
+  
+  /* Style for when the select element is hovered */
+  select:hover {
+    border-color: #999;
+  }
+  
+  /* Style for when the select element is focused */
+  select:focus {
+    outline: none;
+    border-color: #66afe9; /* Highlight color */
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6); /* Shadow effect */
+  }
+  

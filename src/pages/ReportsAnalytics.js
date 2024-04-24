@@ -12,7 +12,7 @@ const ReportsAnalytics = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/products')
+    axios.get('https://server-9ib4.onrender.com/api/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -20,7 +20,7 @@ const ReportsAnalytics = () => {
         console.error('Eroare la preluarea produselor:', error);
       });
 
-    axios.get('https://sundbserver.azurewebsites.net/api/users')
+    axios.get('https://server-9ib4.onrender.com/api/users')
       .then(response => {
         setUsers(response.data);
       })
@@ -28,7 +28,7 @@ const ReportsAnalytics = () => {
         console.error('Eroare la preluarea utilizatorilor:', error);
       });
 
-    axios.get('https://sundbserver.azurewebsites.net/api/orders')
+    axios.get('https://server-9ib4.onrender.com/api/orders')
       .then(response => {
         setOrders(response.data);
       })

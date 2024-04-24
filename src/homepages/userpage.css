@@ -1,9 +1,10 @@
-.bodyuser{
-    animation: slideIn 1s ease;}
+
     .bodyuser {
         background-color: #f5f5f5;
         padding: 50px;
         border-radius: 10px;
+        overflow-y: hidden; 
+        animation: slideIn 1s ease;
       }
       
       .bodyuser ul {

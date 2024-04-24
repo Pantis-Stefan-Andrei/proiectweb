@@ -16,7 +16,7 @@ const OrdersManagement = () => {
     NumeP: ''
   });
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/orders')
+    axios.get('https://server-9ib4.onrender.com/api/orders')
       .then(response => {
         setorders(response.data);
       })
@@ -36,9 +36,9 @@ const OrdersManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://sundbserver.azurewebsites.net/api/orders', neworder);
+      await axios.post('https://server-9ib4.onrender.com/api/orders', neworder);
       // Refetch orders after adding new order
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       setorders(response.data);
       // Reset form
       setNeworder({
@@ -58,7 +58,7 @@ const OrdersManagement = () => {
   const handleresolve = async (orderId) => {
     try { 
 
-      const responseprod = await axios.get('https://sundbserver.azurewebsites.net/api/products');
+      const responseprod = await axios.get('https://server-9ib4.onrender.com/api/products');
  
      
 
@@ -80,20 +80,20 @@ for (const prod of responseprod.data) {
 let ok=0;
 const prod0=prod2;
 
-await axios.delete(`https://sundbserver.azurewebsites.net/api/products/${prod0._id}`);
+await axios.delete(`https://server-9ib4.onrender.com/api/products/${prod0._id}`);
 if(prod2.Cantitate-order2.Cantitate>0)
 {prod2.Cantitate=prod2.Cantitate-order2.Cantitate;
   ok=1
 }
-await axios.post('https://sundbserver.azurewebsites.net/api/products', prod2);
+await axios.post('https://server-9ib4.onrender.com/api/products', prod2);
 
 
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/orders/${orderId}`);
       if(ok===1)
       order2.Stare = 'finalizata';
      // console.log(order2);
-      await axios.post('https://sundbserver.azurewebsites.net/api/orders', order2);
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      await axios.post('https://server-9ib4.onrender.com/api/orders', order2);
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       setorders(response.data);
     } catch (error) {
       console.error('Eroare la ștergerea produsului:', error);
@@ -101,9 +101,9 @@ await axios.post('https://sundbserver.azurewebsites.net/api/products', prod2);
   };
   const handleDeleteorder = async (orderId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/orders/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       setorders(response.data);
       setSelectedorderId(null); // Deselect the order after deletion
     } catch (error) {

@@ -22,7 +22,7 @@ const Dashboard = () => {
   const userChartRef = useRef(null);
 
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/products')
+    axios.get('https://server-9ib4.onrender.com/api/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -30,7 +30,7 @@ const Dashboard = () => {
         console.error('Eroare la preluarea produselor:', error);
       });
 
-    axios.get('https://sundbserver.azurewebsites.net/api/users')
+    axios.get('https://server-9ib4.onrender.com/api/users')
       .then(response => {
         setUsers(response.data);
       })

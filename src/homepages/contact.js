@@ -22,7 +22,7 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-     axios.post('https://sundbserver.azurewebsites.net/api/problems',formData);
+     axios.post('https://server-9ib4.onrender.com/api/problems',formData);
       
       
     

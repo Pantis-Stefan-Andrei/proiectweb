@@ -21,7 +21,7 @@ const Cart = ({ email }) => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const filteredOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
       setOrders(filteredOrders);
     } catch (error) {
@@ -31,17 +31,17 @@ const Cart = ({ email }) => {
 
   const handleBuyAll = async () => {
     try {
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
 
       const processingOrders = response.data.filter(order => (order.Stare ===('creare'))&&order.NumeP===email);
    
       // Assuming there might be multiple processing orders, updating each one
       for (const order of processingOrders) {
         const order2=order;
-        await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${order._id}`);
+        await axios.delete(`https://server-9ib4.onrender.com/api/orders/${order._id}`);
         order2.Stare = 'Processing';
         console.log(order2);
-        await axios.post('https://sundbserver.azurewebsites.net/api/orders', order2);
+        await axios.post('https://server-9ib4.onrender.com/api/orders', order2);
     
       }
       setOrders(processingOrders);
@@ -54,7 +54,7 @@ const Cart = ({ email }) => {
   };
   const handleShowProcessingOrders = async () => {
     try {
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const processingOrders = response.data.filter(order => (order.Stare ===('Processing'))&&order.NumeP===email);
       setOrders(processingOrders);
       console.log(processingOrders);
@@ -64,7 +64,7 @@ const Cart = ({ email }) => {
   };
   const handleShowcart = async () => {
     try {
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const processingOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
       setOrders(processingOrders);
       console.log(processingOrders);
@@ -74,7 +74,7 @@ const Cart = ({ email }) => {
   };
   const handleHistory = async () => {
     try {
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const processingOrders = response.data.filter(order =>(order.Stare ===('finalizata'))&&order.NumeP===email);
       setOrders(processingOrders);
       console.log(processingOrders);
@@ -84,9 +84,9 @@ const Cart = ({ email }) => {
   };
   const handleDeleteOrder = async (orderId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/orders/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const filteredOrders = response.data.filter(order => order.NumeP === email);
       setOrders(filteredOrders);
       setSelectedOrderId(null); // Deselect the order after deletion
@@ -98,9 +98,9 @@ const Cart = ({ email }) => {
   const handleUpdateQuantity = async (orderId, newQuantity) => {
     try {
       // Update quantity for the selected order
-      await axios.put(`https://sundbserver.azurewebsites.net/api/orders/${orderId}`, { Cantitate: newQuantity });
+      await axios.put(`https://server-9ib4.onrender.com/api/orders/${orderId}`, { Cantitate: newQuantity });
       // Refetch orders after updating quantity
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/orders');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/orders');
       const filteredOrders = response.data.filter(order =>(order.Stare ===('creare'))&&order.NumeP===email);
       setOrders(filteredOrders);
     } catch (error) {

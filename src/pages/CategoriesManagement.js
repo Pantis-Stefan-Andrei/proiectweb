@@ -15,7 +15,7 @@ const CategoriesManagement = () => {
     User: ''
   });
   useEffect(() => {
-    axios.get('https://sundbserver.azurewebsites.net/api/allcomments')
+    axios.get('https://server-9ib4.onrender.com/api/allcomments')
       .then(response => {
         setorders(response.data);
       })
@@ -35,9 +35,9 @@ const CategoriesManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://sundbserver.azurewebsites.net/api/comments', neworder);
+      await axios.post('https://server-9ib4.onrender.com/api/comments', neworder);
       // Refetch orders after adding new order
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/allcomments');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/allcomments');
       setorders(response.data);
       // Reset form
       setNeworder({
@@ -54,9 +54,9 @@ const CategoriesManagement = () => {
   };
   const handleDeleteorder = async (orderId) => {
     try {
-      await axios.delete(`https://sundbserver.azurewebsites.net/api/comments/${orderId}`);
+      await axios.delete(`https://server-9ib4.onrender.com/api/comments/${orderId}`);
       // Refetch orders after deletion
-      const response = await axios.get('https://sundbserver.azurewebsites.net/api/allcomments');
+      const response = await axios.get('https://server-9ib4.onrender.com/api/allcomments');
       setorders(response.data);
       setSelectedorderId(null); // Deselect the order after deletion
     } catch (error) {
