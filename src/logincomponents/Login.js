@@ -91,8 +91,8 @@ function Login() {
         </form>
         <p>
           <label>Orice studentă este rezolvată aici!</label>
-          <br></br>
-          <a href="#">Forget your password?</a>
+         
+         
         </p>
       </div>
     </div>

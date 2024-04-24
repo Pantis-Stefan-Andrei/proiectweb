@@ -4,7 +4,48 @@
   padding: 0;
 }
 
-h1 {
+/* Tab link styles */
+.tablink {
+  margin-top: 10px;
+  max-width: 48%;
+  
+}
+
+.tablink a {
+  margin-left: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+}
+
+.tablink a:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+ 
+}
+
+/* Active tab styles */
+.tablink.active a {
+  background-color: #007bff;
+  color: #fff;
+ 
+ 
+
+}
+
+/* Tabs content styles */
+.tabs-content {
+ 
+  margin-top: 10px;
+}
+h1 {  
   /* center the texts */
   text-align: center;
   /* set the font size */
@@ -27,9 +68,11 @@ line-height: 1;
 a {
   color: #666;
   text-decoration: none;
+
 }
 a:hover {
   color: #4e4d4d;
+ 
 }
 
 input {
