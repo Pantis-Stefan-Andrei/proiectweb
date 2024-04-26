@@ -53,7 +53,19 @@ const Dashboard = () => {
  
 
   const productChartData = {
-    labels: products.map(product => product.Nume),
+    labels: products.map(product => {
+      const name = product.Nume;
+      // Define a threshold for splitting the label
+      const threshold = 23; // You can adjust this value as needed
+  
+      // Check if the label length exceeds the threshold
+      if (name.length > threshold) {
+        // Split the label into two lines
+        return [name.slice(0, threshold), name.slice(threshold)];
+      } else {
+        return name;
+      }
+    }),
     datasets: [{
       label: 'Cantitate',
       backgroundColor: 'rgba(75,192,192,1)',
@@ -64,14 +76,14 @@ const Dashboard = () => {
       data: products.map(product => product.Cantitate)
     }]
   };
-
+  
   const userChartData = {
     labels: ['Anul 1', 'Anul 2', 'Anul 3', 'Anul 4', 'Master', 'Doctorat'],
     datasets: [{
       label: 'Număr Utilizatori',
       backgroundColor: 'rgba(255,99,132,1)',
       borderColor: 'rgba(0,0,0,1)',
-      borderWidth: 1,
+      borderWidth: 1, 
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(0,0,0,1)',
       data: [
@@ -79,8 +91,7 @@ const Dashboard = () => {
         users.filter(user => user.anstudiu === 2).length,
         users.filter(user => user.anstudiu === 3).length,
         users.filter(user => user.anstudiu === 4).length,
-        users.filter(user => user.anstudiu === 'Master').length,
-        users.filter(user => user.anstudiu === 'Doctorat').length
+        
       ]
     }]
   };

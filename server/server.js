@@ -193,7 +193,7 @@ app.post('/api/products', async (req, res) => {
   try {
     // Verificam daca toate c�mpurile sunt completate
     if (!Nume || !Cantitate || !Marime || !Gen || !Path ) {
-      return res.status(400).json({ message: 'Toate campurile sunt obligatorii' });
+      return res.status(400).json({ message: 'Toate c�mpurile sunt obligatorii' });
     }
 
     // Cream un nou produs
